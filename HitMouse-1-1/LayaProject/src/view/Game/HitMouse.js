@@ -15,7 +15,17 @@ var HitMouse=(function(_super){
 	var _proto = HitMouse.prototype;
 
 	_proto.isShow = function() {
+		this.barNum -= (1/120);
 		this.mole.show();
+
+		if (this.barNum <= 0) {
+			this.gameOver();
+			return;
+		}
+	}
+
+	_proto.gameOver = function() {
+
 	}
 
 	return HitMouse;
