@@ -53364,6 +53364,67 @@ var CLASS$=Laya.class;
 var STATICATTR$=Laya.static;
 var View=laya.ui.View;
 var Dialog=laya.ui.Dialog;
+var GameOverUI=(function(_super){
+		function GameOverUI(){
+			
+		    this.restartGame=null;
+		    this.scoreNum=null;
+
+			GameOverUI.__super.call(this);
+		}
+
+		CLASS$(GameOverUI,'ui.Game.GameOverUI',_super);
+		var __proto__=GameOverUI.prototype;
+		__proto__.createChildren=function(){
+		    
+			laya.ui.Component.prototype.createChildren.call(this);
+			this.createView(GameOverUI.uiView);
+
+		}
+
+		GameOverUI.uiView={"type":"View","props":{"width":500,"height":400},"child":[{"type":"Image","props":{"y":0,"x":0,"width":500,"skin":"comp/overBg.png","height":401,"sizeGrid":"18,19,17,18"}},{"type":"Button","props":{"y":280,"x":161,"var":"restartGame","stateNum":2,"skin":"comp/btn_restart.png"}},{"type":"Image","props":{"y":25,"x":28,"skin":"comp/total Score.png"}},{"type":"Box","props":{"y":155,"x":158,"var":"scoreNum"},"child":[{"type":"Clip","props":{"skin":"comp/clip_number.png","name":"item0","clipX":10}},{"type":"Clip","props":{"x":18,"skin":"comp/clip_number.png","name":"item1","clipX":10}},{"type":"Clip","props":{"x":36,"skin":"comp/clip_number.png","name":"item2","clipX":10}},{"type":"Clip","props":{"x":54,"skin":"comp/clip_number.png","name":"item3","clipX":10}},{"type":"Clip","props":{"x":72,"skin":"comp/clip_number.png","name":"item4","clipX":10}},{"type":"Clip","props":{"x":90,"skin":"comp/clip_number.png","name":"item5","clipX":10}},{"type":"Clip","props":{"x":108,"skin":"comp/clip_number.png","name":"item6","clipX":10}},{"type":"Clip","props":{"x":126,"skin":"comp/clip_number.png","name":"item7","clipX":10}},{"type":"Clip","props":{"x":144,"skin":"comp/clip_number.png","name":"item8","clipX":10}},{"type":"Clip","props":{"x":162,"skin":"comp/clip_number.png","name":"item9","clipX":10}}]}]};
+		return GameOverUI;
+	})(View);
+var GameStartUI=(function(_super){
+		function GameStartUI(){
+			
+		    this.startGame=null;
+
+			GameStartUI.__super.call(this);
+		}
+
+		CLASS$(GameStartUI,'ui.Game.GameStartUI',_super);
+		var __proto__=GameStartUI.prototype;
+		__proto__.createChildren=function(){
+		    
+			laya.ui.Component.prototype.createChildren.call(this);
+			this.createView(GameStartUI.uiView);
+
+		}
+
+		GameStartUI.uiView={"type":"View","props":{"width":800,"height":600},"child":[{"type":"Image","props":{"y":55,"x":38,"skin":"comp/help.png"}},{"type":"Button","props":{"y":447,"x":311,"var":"startGame","stateNum":2,"skin":"comp/btn_start.png"}}]};
+		return GameStartUI;
+	})(View);
+var HammerUI=(function(_super){
+		function HammerUI(){
+			
+		    this.hit=null;
+
+			HammerUI.__super.call(this);
+		}
+
+		CLASS$(HammerUI,'ui.Game.HammerUI',_super);
+		var __proto__=HammerUI.prototype;
+		__proto__.createChildren=function(){
+		    
+			laya.ui.Component.prototype.createChildren.call(this);
+			this.createView(HammerUI.uiView);
+
+		}
+
+		HammerUI.uiView={"type":"View","props":{"width":100,"height":100},"child":[{"type":"Image","props":{"y":56,"x":52,"width":98,"skin":"comp/hammer.png","rotation":20,"pivotY":45,"pivotX":51,"height":77},"compId":2}],"animations":[{"nodes":[{"target":2,"keyframes":{"y":[{"value":56,"tweenMethod":"linearNone","tween":true,"target":2,"key":"y","index":0},{"value":56,"tweenMethod":"linearNone","tween":true,"target":2,"key":"y","index":1}],"x":[{"value":52,"tweenMethod":"linearNone","tween":true,"target":2,"key":"x","index":0},{"value":52,"tweenMethod":"linearNone","tween":true,"target":2,"key":"x","index":1}],"rotation":[{"value":20,"tweenMethod":"linearNone","tween":true,"target":2,"key":"rotation","index":0},{"value":-20,"tweenMethod":"linearNone","tween":true,"target":2,"key":"rotation","index":1},{"value":0,"tweenMethod":"linearNone","tween":true,"target":2,"key":"rotation","index":5},{"value":20,"tweenMethod":"linearNone","tween":true,"target":2,"key":"rotation","index":6}]}}],"name":"hit","id":1,"frameRate":24,"action":0}]};
+		return HammerUI;
+	})(View);
 var HitMouseUI=(function(_super){
 		function HitMouseUI(){
 			
@@ -53385,6 +53446,103 @@ var HitMouseUI=(function(_super){
 		HitMouseUI.uiView={"type":"View","props":{"width":800,"height":600},"child":[{"type":"Image","props":{"y":25,"x":25,"skin":"comp/back.png"}},{"type":"Box","props":{"y":196,"x":156,"name":"item0"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":10,"x":62,"width":86,"skin":"comp/score_1.png","pivotY":16,"pivotX":43,"name":"scoreImg","height":30}},{"type":"Image","props":{"y":81,"skin":"comp/mask-01.png"}}]},{"type":"Box","props":{"y":195,"x":339,"name":"item1"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":81,"x":5,"width":136,"skin":"comp/mask-02.png","height":46}},{"type":"Image","props":{"y":8,"x":65,"width":86,"skin":"comp/score_1.png","pivotY":15,"pivotX":45,"name":"scoreImg","height":30}}]},{"type":"Box","props":{"y":199,"x":537,"name":"item2"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":82,"x":3,"width":135,"skin":"comp/mask-03.png","height":46}},{"type":"Image","props":{"y":9,"x":62,"width":86,"skin":"comp/score_1.png","pivotY":16,"pivotX":44,"name":"scoreImg","height":30}}]},{"type":"Box","props":{"y":287,"x":125,"name":"item3"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":82,"x":6,"width":134,"skin":"comp/mask-04.png","height":46}},{"type":"Image","props":{"y":9,"x":59,"width":86,"skin":"comp/score_1.png","pivotY":15,"pivotX":39,"name":"scoreImg","height":30}}]},{"type":"Box","props":{"y":289,"x":346,"name":"item4"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":81,"skin":"comp/mask-05.png"}},{"type":"Image","props":{"y":6,"x":59,"width":86,"skin":"comp/score_1.png","pivotY":14,"pivotX":40,"name":"scoreImg","height":30}}]},{"type":"Box","props":{"y":284,"x":541,"name":"item5"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":81,"skin":"comp/mask-06.png"}},{"type":"Image","props":{"y":6,"x":63,"width":86,"skin":"comp/score_1.png","pivotY":13,"pivotX":44,"name":"scoreImg","height":30}}]},{"type":"Box","props":{"y":383,"x":120,"name":"item6"},"child":[{"type":"Image","props":{"y":8,"x":64,"width":86,"skin":"comp/score_1.png","pivotY":14,"pivotX":44,"name":"scoreImg","height":30}},{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":83,"x":2,"width":136,"skin":"comp/mask-07.png","height":46}}]},{"type":"Box","props":{"y":388,"x":345,"name":"item7"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":81,"skin":"comp/mask-08.png"}},{"type":"Image","props":{"y":9,"x":63,"width":86,"skin":"comp/score_1.png","pivotY":14,"pivotX":44,"name":"scoreImg","height":30}}]},{"type":"Box","props":{"y":393,"x":567,"name":"item8"},"child":[{"type":"Image","props":{"x":3,"skin":"comp/mouse_normal_1.png","name":"normal"}},{"type":"Image","props":{"y":13,"x":7,"skin":"comp/mouse_hit_1.png","name":"hit"}},{"type":"Image","props":{"y":81,"skin":"comp/mask-09.png"}},{"type":"Image","props":{"y":9,"x":64,"width":86,"skin":"comp/score_1.png","pivotY":14,"pivotX":43,"name":"scoreImg","height":30}}]},{"type":"ProgressBar","props":{"y":11,"x":14,"width":261,"var":"barNum","value":1,"skin":"comp/progress_time.png","height":23}},{"type":"Box","props":{"y":45,"x":23,"var":"scoreNums"},"child":[{"type":"Clip","props":{"skin":"comp/clip_number.png","name":"item0","clipX":10}},{"type":"Clip","props":{"x":18,"skin":"comp/clip_number.png","name":"item1","clipX":10}},{"type":"Clip","props":{"x":36,"skin":"comp/clip_number.png","name":"item2","clipX":10}},{"type":"Clip","props":{"x":54,"skin":"comp/clip_number.png","name":"item3","clipX":10}},{"type":"Clip","props":{"x":72,"skin":"comp/clip_number.png","name":"item4","clipX":10}},{"type":"Clip","props":{"x":90,"skin":"comp/clip_number.png","name":"item5","clipX":10}},{"type":"Clip","props":{"x":108,"skin":"comp/clip_number.png","name":"item6","clipX":10}},{"type":"Clip","props":{"x":126,"skin":"comp/clip_number.png","name":"item7","clipX":10}},{"type":"Clip","props":{"x":144,"skin":"comp/clip_number.png","name":"item8","clipX":10}},{"type":"Clip","props":{"x":162,"skin":"comp/clip_number.png","name":"item9","clipX":10}}]}]};
 		return HitMouseUI;
 	})(View);
+/**
+ * 
+ * 
+ */
+var GameStart=(function(_super){
+	function GameStart(){
+		GameStart.super(this);
+		this.startGame.on(Laya.Event.CLICK, this, this.onStartGame);
+	}
+
+	Laya.class(GameStart,"GameStart",_super);
+	var _proto = GameStart.prototype;
+
+	_proto.onStartGame = function () {
+		this.removeSelf();
+
+		if (!this.mouseGame) {
+			this.mouseGame = new HitMouse();
+		}
+		this.mouseGame.startGame();
+		Laya.stage.addChild(this.mouseGame);
+	}
+
+	return GameStart;
+})(GameStartUI)
+/**
+ * 
+ * 
+ */
+var GameOver=(function(_super){
+	function GameOver(hitCallRestartGame){
+		GameOver.super(this);
+
+		this.hitCallRestartGame = hitCallRestartGame;
+		this.restartGame.on(Laya.Event.CLICK,this,this.onRestartGame);
+	}
+
+	Laya.class(GameOver,"GameOver",_super);
+	var _proto = GameOver.prototype;
+
+	_proto.onRestartGame = function () {
+		this.removeSelf();
+		this.hitCallRestartGame.run();
+		if(!this.startGame) {
+			this.startGame = new GameStart();
+		}
+		Laya.stage.addChild(this.startGame);
+	}
+
+	_proto.updateScoreGameOver = function (score) {
+		this.data = {};
+        this.temp = score;
+        for (var i = 9; i >= 0; i--) {
+            this.data["item"+i] = {index:Math.floor(this.temp%10)};
+            this.temp /= 10;
+        }
+        this.scoreNum.dataSource = this.data;
+	}
+	
+	return GameOver;
+})(GameOverUI)
+/*
+* name;
+*/
+var Hammer = (function (_super) {
+    function Hammer() {
+        Hammer.super(this);
+    }
+    
+    Laya.class(Hammer,"Hammer",_super);
+    var _proto = Hammer.prototype;
+
+    //开始使用
+    _proto.start = function() {
+        Laya.Mouse.hide();
+        Laya.stage.on(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
+        Laya.stage.on(Laya.Event.MOUSE_MOVE,this,this.onMouseMove);
+        this.onMouseMove();
+    }
+
+    //结束使用
+    _proto.end = function() {
+        Laya.Mouse.show();
+        Laya.stage.off(Laya.Event.MOUSE_DOWN,this,this.onMouseDown);
+        Laya.stage.off(Laya.Event.MOUSE_MOVE,this,this.onMouseMove);
+    }
+
+    _proto.onMouseDown = function() {
+        this.hit.play(0,false);
+    }
+
+    _proto.onMouseMove = function() {
+        this.pos(Laya.stage.mouseX-this.width/2, Laya.stage.mouseY-this.height/3);
+    }
+
+    return Hammer;
+}(HammerUI));
 /**
  * 
  * 
@@ -53469,10 +53627,10 @@ var Mole = (function(){
  */
 var HitMouse=(function(_super){
 	function HitMouse(){
-		this.score = 0;
+		this.moleNum = 9;
 		this.moles = new Array;
-        this.moleNum = 9;
 		this.hitCallBackHd = Laya.Handler.create(this,this.setScore,null,false);
+		this.hitCallRestartGame = Laya.Handler.create(this,this.restartGame,null,false);
 
 		HitMouse.super(this);
 		
@@ -53483,7 +53641,9 @@ var HitMouse=(function(_super){
             this.hitCallBackHd,this.box.getChildByName("scoreImg"));
             this.moles.push(this.mole);
         }
-		Laya.timer.loop(1000,this,this.isShow);
+		this.hammer = new Hammer();
+		this.hammer.visible = false;
+		this.addChild(this.hammer);
 	}
 
 	Laya.class(HitMouse,"HitMouse",_super);
@@ -53491,7 +53651,7 @@ var HitMouse=(function(_super){
 
 	//显示 地鼠
 	_proto.isShow = function() {
-		this.barNum.value -= (1/120);
+		this.barNum.value -= (1/20);
 		if (this.barNum.value <= 0) {
 			this.gameOver();
 			return;
@@ -53501,17 +53661,39 @@ var HitMouse=(function(_super){
         this.moles[this.index].show();
 	}
 
+	_proto.startGame = function () {
+		this.barNum.value = 1;
+		this.score = 0;
+		this.updateScoreUI();
+
+		this.hammer.visible = true;
+		this.hammer.start();
+		Laya.timer.loop(1000,this,this.isShow);	
+	}
+
 	//Game Over 游戏结束
 	_proto.gameOver = function () {
 		Laya.timer.clear(this,this.isShow);
-		console.log("Game Over!");
+		this.hammer.visible = false;
+        this.hammer.end();
+		
+		this.gameOver = new GameOver(this.hitCallRestartGame);
+		this.gameOver.centerX = 0;
+		this.gameOver.centerY = 30;
+		this.gameOver.updateScoreGameOver(this.score);
+		Laya.stage.addChild(this.gameOver);
+	}
+
+	//重新开始游戏
+	_proto.restartGame = function () {
+		this.removeSelf();
 	}
 
 	 //设置分数
     _proto.setScore = function(type) {
         this.score += (type==1 ? -100:100);
         if(this.score <= 0) this.score = 0;
-		console.log(this.score);
+		// console.log(this.score);
         this.updateScoreUI();
     }
 
@@ -53548,10 +53730,14 @@ var LayaSample = (function() {
 
     //初始化 game 游戏界面
     function onLoaded() {
-        var hitMouse = new HitMouse();
-        Laya.stage.addChild(hitMouse);
+        // var hitMouse = new HitMouse();
+        // Laya.stage.addChild(hitMouse);
+        // LayaSample.gameStart = new GameStart();
+        // Laya.stage.addChild(LayaSample.gameStart);
+
+        this.gameStart = new GameStart();
+        Laya.stage.addChild(this.gameStart);
     }
-    
 })();
 
 

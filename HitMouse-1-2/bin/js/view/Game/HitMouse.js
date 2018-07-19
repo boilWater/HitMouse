@@ -4,10 +4,10 @@
  */
 var HitMouse=(function(_super){
 	function HitMouse(){
-		this.score = 0;
+		this.moleNum = 9;
 		this.moles = new Array;
-        this.moleNum = 9;
 		this.hitCallBackHd = Laya.Handler.create(this,this.setScore,null,false);
+		this.hitCallRestartGame = Laya.Handler.create(this,this.restartGame,null,false);
 
 		HitMouse.super(this);
 		
@@ -18,7 +18,9 @@ var HitMouse=(function(_super){
             this.hitCallBackHd,this.box.getChildByName("scoreImg"));
             this.moles.push(this.mole);
         }
-		Laya.timer.loop(1000,this,this.isShow);
+		this.hammer = new Hammer();
+		this.hammer.visible = false;
+		this.addChild(this.hammer);
 	}
 
 	Laya.class(HitMouse,"HitMouse",_super);
@@ -26,7 +28,7 @@ var HitMouse=(function(_super){
 
 	//显示 地鼠
 	_proto.isShow = function() {
-		this.barNum.value -= (1/120);
+		this.barNum.value -= (1/20);
 		if (this.barNum.value <= 0) {
 			this.gameOver();
 			return;
@@ -36,17 +38,39 @@ var HitMouse=(function(_super){
         this.moles[this.index].show();
 	}
 
+	_proto.startGame = function () {
+		this.barNum.value = 1;
+		this.score = 0;
+		this.updateScoreUI();
+
+		this.hammer.visible = true;
+		this.hammer.start();
+		Laya.timer.loop(1000,this,this.isShow);	
+	}
+
 	//Game Over 游戏结束
 	_proto.gameOver = function () {
 		Laya.timer.clear(this,this.isShow);
-		console.log("Game Over!");
+		this.hammer.visible = false;
+        this.hammer.end();
+		
+		this.gameOver = new GameOver(this.hitCallRestartGame);
+		this.gameOver.centerX = 0;
+		this.gameOver.centerY = 30;
+		this.gameOver.updateScoreGameOver(this.score);
+		Laya.stage.addChild(this.gameOver);
+	}
+
+	//重新开始游戏
+	_proto.restartGame = function () {
+		this.removeSelf();
 	}
 
 	 //设置分数
     _proto.setScore = function(type) {
         this.score += (type==1 ? -100:100);
         if(this.score <= 0) this.score = 0;
-		console.log(this.score);
+		// console.log(this.score);
         this.updateScoreUI();
     }
 

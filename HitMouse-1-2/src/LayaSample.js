@@ -19,10 +19,14 @@ var LayaSample = (function() {
 
     //初始化 game 游戏界面
     function onLoaded() {
-        var hitMouse = new HitMouse();
-        Laya.stage.addChild(hitMouse);
+        // var hitMouse = new HitMouse();
+        // Laya.stage.addChild(hitMouse);
+        // LayaSample.gameStart = new GameStart();
+        // Laya.stage.addChild(LayaSample.gameStart);
+
+        this.gameStart = new GameStart();
+        Laya.stage.addChild(this.gameStart);
     }
-    
 })();
 
 
