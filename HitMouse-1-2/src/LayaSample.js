@@ -9,9 +9,9 @@ var LayaSample = (function() {
         Laya.MiniAdpter.init();
 
         Laya.init(800, 600);
-        Laya.stage.scaleMode = Laya.Stage.SCALE_NOSCALE;
+        Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;
         Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
-        Laya.stage.alignV = Laya.Stage.ALIGN_MIDDLE;
+        Laya.stage.alignV = Laya.Stage.ALIGN_CENTER;
         Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
         Laya.stage.bgColor = "#ffcccc";
         Laya.loader.load("res/atlas/comp.atlas",Laya.Handler.create(this,onLoaded),null,Laya.Loader.ATLAS);

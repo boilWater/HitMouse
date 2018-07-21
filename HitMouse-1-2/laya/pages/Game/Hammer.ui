@@ -86,7 +86,7 @@
                                 "tween":true,
                                 "target":2,
                                 "key":"rotation",
-                                "index":5
+                                "index":4
                             },
                             {
                                 "value":20,
@@ -94,7 +94,7 @@
                                 "tween":true,
                                 "target":2,
                                 "key":"rotation",
-                                "index":6
+                                "index":5
                             }]
                     }
                 }],
